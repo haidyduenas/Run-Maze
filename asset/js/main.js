@@ -10,12 +10,12 @@ var mapa=[
 "*_**_*__*****_**_*",
 "*o*__*________**W*",
 "******************"];
-
+//... Creo un array nuevo,que tenga el mismo espacio que el array mapa.
 var celdas = new Array(mapa.length);
 for (var i = 0; i < celdas.length; i++) {
 	celdas[i] = new Array(mapa[0].length);
 }
-
+console.log(celdas);
 var celdaActual;
 
 var laberinto = document.getElementById('map');
@@ -50,8 +50,11 @@ for (var i = 0; i < mapa.length; i++) {
 	
 				celda.style.backgroundColor = "red";
 		}
+		else if (mapa[i][j] == "_"){
+			celda.setAttribute("class","white");
+		}
 		fila.appendChild(celda);
-		celdas[i][j] = celda;
+		celdas[i][j] = celda; // Aqui le doy los td a mi matriz celdas
 	}
 	tabla.appendChild(fila);
 }
@@ -90,7 +93,7 @@ der.onclick = function(){
 }		
 
 izq.onclick = function(){
-	if(celdaActual.direccion == "arriba"){
+ 	if(celdaActual.direccion == "arriba"){
 		var imagen = document.createElement("img");
 			imagen.src = "asset/img/izquierda.png";
 			celdaActual.direccion = "izquierda";
@@ -150,12 +153,20 @@ avanzar.onclick = function(){
 		}
 	}
 	else if(celdaActual.direccion=="abajo"){
-		if(mapa[celdaActual.x + 1][celdaActual.y] == "_" ){ 
+		if(mapa[celdaActual.x + 1][celdaActual.y] == "_"){ 
 			var imagen = document.createElement("img"); //etiqueta de imagen
 			imagen.src = "asset/img/abajo.png";
 			celdas[celdaActual.x][celdaActual.y].removeChild(celdas[celdaActual.x][celdaActual.y].firstChild);
 			celdaActual.x = celdaActual.x+1;
 			celdas[celdaActual.x][celdaActual.y].appendChild(imagen);
+		}
+		if (mapa[celdaActual.x + 1][celdaActual.y] == "W" ) {
+			var imagen = document.createElement("img"); //etiqueta de imagen
+			imagen.src = "asset/img/abajo.png";
+			celdas[celdaActual.x][celdaActual.y].removeChild(celdas[celdaActual.x][celdaActual.y].firstChild);
+			celdaActual.x = celdaActual.x+1;
+			celdas[celdaActual.x][celdaActual.y].appendChild(imagen);
+			alert("You win!!!");
 		}
 	}
 	console.log(celdaActual.x +" - "+celdaActual.y + " - "+celdaActual.direccion)
