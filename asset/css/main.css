@@ -3,6 +3,11 @@
   color:white;
 }
 
+.white {
+	background-color: white;
+}
+
+
 td{
   width: 50px;
   height: 50px;
@@ -15,3 +20,10 @@ td, tr : hover{
 table{
 	border-spacing: 0px;
 }
+
+body {
+	background-image: url("https://k37.kn3.net/taringa/2/3/5/8/8/8/77/nacholcaceres/B86.jpg?8555"); 
+}
+ h1 {
+ 	color: white;
+ }
